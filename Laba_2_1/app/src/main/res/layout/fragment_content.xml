@@ -71,11 +71,24 @@
             android:text="Red" />
     </RadioGroup>
 
-    <Button
-        android:id="@+id/buttonOk"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Write To DB" />
+
+        <Button
+            android:id="@+id/buttonRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Read DB" />
+    </LinearLayout>
 </LinearLayout>
