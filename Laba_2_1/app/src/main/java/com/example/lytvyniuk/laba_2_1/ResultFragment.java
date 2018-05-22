@@ -19,7 +19,7 @@ public class ResultFragment extends Fragment {
     }
 
     public void setText(String item) {
-        resultTextView.setText(resultTextView.getText() + item);
+        resultTextView.setText(item);
     }
 }
 

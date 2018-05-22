@@ -20,15 +20,11 @@ public class ContentFragment extends Fragment {
     TextView textView;
     SeekBar seekBar;
     String color;
-    String text;
     int count;
     Button okButton;
     RadioGroup radioGroup;
     EditText editText;
     Button readButton;
-
-    DatabaseHelper sqlHelper;
-    SQLiteDatabase db;
 
     private OnFragmentInteractionListener mListener;
 
@@ -129,9 +125,10 @@ public class ContentFragment extends Fragment {
     public void updateDetail() {
         //String text = "Comment: " + editText.getText() + "; Color: " + color + "; Quantity: " + count + "\n";
         DatabaseHelper sqlHelper = new DatabaseHelper(getActivity());
-        SQLiteDatabase db = sqlHelper.getWritableDatabase();
+        SQLiteDatabase db = sqlHelper.getReadableDatabase();
+        String text = "";
 
-        Cursor query = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE + ";", null);
+        Cursor query = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE , null);
         if (query.moveToFirst()) {
             text = "";
 
@@ -140,6 +137,7 @@ public class ContentFragment extends Fragment {
                 String dbComment = query.getString(1);
                 int dbCount = query.getInt(2);
                 String dbColor = query.getString(3);
+
                 text += "Id: " + id + "; Comment: " + dbComment + "; Color: " + dbColor + "; Quantity: " + dbCount + "\n";
             }
             while (query.moveToNext());
